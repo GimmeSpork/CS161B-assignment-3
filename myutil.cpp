@@ -27,14 +27,12 @@ void welcome(){
 
 //readScores function to read scores
 void readScores(double scores[], int &count){
-    int i;
-    double num;
 
     count = 0;
 
     readDouble("Score: ", scores[count]);
-    while(num != -1){
-        if(num <= 4 && num >= 0){
+    while(scores[count] != -1){
+        if(scores[count] <= 4 && scores[count] >= 0){
             readDouble("Score: ", scores[count]);
             ++count;
         }else{
@@ -44,7 +42,6 @@ void readScores(double scores[], int &count){
         }
     }
 }
-
 
 //read double function
 //called every time a double needs to be read
