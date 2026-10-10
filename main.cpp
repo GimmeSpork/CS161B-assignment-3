@@ -18,8 +18,7 @@ int main(){
   const int MAX_VALS = 20;
   double scores[MAX_VALS];
   char grade[MAX_VALS];
-  int count;
-  int i;
+  int count = 0;
 
 welcome();
 readScores(scores, count);

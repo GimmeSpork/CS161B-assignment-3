@@ -32,33 +32,32 @@ void readScores(double scores[], int &count){
 
     count = 0;
 
-    cout << "Score: ";
-    cin >> num;
-    scores[0] = num;
+    readDouble("Score: ", scores[count]);
     while(num != -1){
         if(num <= 4 && num >= 0){
-            readDouble("Score: ", num);
-            count = count + 1;
-        }else if(num > 4 && num < 0){
+            readDouble("Score: ", scores[count]);
+            ++count;
+        }else{
             cout << "Invalid score! Please try again!" << endl;
-            readDouble("Score: ", num);
+            readDouble("Score: ", scores[count]);
+            ++count;
         }
     }
 }
 
+
 //read double function
 //called every time a double needs to be read
 void readDouble(string prompt, double &num){
-    double scores[MAX_VAL];
 
     cout << prompt;
-    cin >> scores[MAX_VAL];
+    cin >> num;
     while(!cin){
         cout << "Invalid score! Please try again!!" << endl;
         cin.clear();
         cin.ignore(100, '\n');
         cout << "Score: ";
-        cin >> scores[MAX_VAL];
+        cin >> num;
     }
     cin.ignore(10, '\n');
 }
