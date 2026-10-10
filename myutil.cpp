@@ -14,26 +14,34 @@ void sort(double scores[], char grade[], int count);
 double median(double scores[], int count);
 int main();
 
+//constant int declaration
+const int MAX_VAL = 20;
 //start of bulk code
 //welcome function
 void welcome(){
     cout << "Welcome to my Parallel Arrays program!" << endl;
     cout << "Please enter the list of scores (-1 to end input)" << endl;
     cout << "Valid scores are between 0 and 4 inclusive." << endl;
+    cout << endl;
 }
 
 //readScores function to read scores
 void readScores(double scores[], int &count){
     int i;
-    int numVals;
     double num;
 
     count = 0;
 
-    for (i = 0; i < numVals; ++i){
-        while((scores[i] != -1) && (scores[i] <= 4 && scores[i] >= 0)){
-            readDouble("Scores: ", scores[i]);
+    cout << "Score: ";
+    cin >> num;
+    scores[0] = num;
+    while(num != -1){
+        if(num <= 4 && num >= 0){
+            readDouble("Score: ", num);
             count = count + 1;
+        }else if(num > 4 && num < 0){
+            cout << "Invalid score! Please try again!" << endl;
+            readDouble("Score: ", num);
         }
     }
 }
@@ -41,15 +49,16 @@ void readScores(double scores[], int &count){
 //read double function
 //called every time a double needs to be read
 void readDouble(string prompt, double &num){
-    double tempVar = 0.0;
+    double scores[MAX_VAL];
 
     cout << prompt;
-    cin >> tempVar;
+    cin >> scores[MAX_VAL];
     while(!cin){
         cout << "Invalid score! Please try again!!" << endl;
         cin.clear();
         cin.ignore(100, '\n');
-        cin >> tempVar;
+        cout << "Score: ";
+        cin >> scores[MAX_VAL];
     }
     cin.ignore(10, '\n');
 }
